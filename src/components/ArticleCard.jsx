@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ArticleCard = ({ article }) => {
   return (
     <section key={article.article_id} className="article-card">
@@ -7,6 +9,7 @@ const ArticleCard = ({ article }) => {
       <p>{article.author}</p>
       <p>{article.created_at}</p>
       </div>
+      <Link to={`/articles/${article.article_id}`}>continue to read article...</Link>
     </section>
   );
 };
