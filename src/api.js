@@ -10,18 +10,20 @@ export const getArticles = () => {
     .then((articles) => {
       return articles.data;
     })
-    .catch((error) => {
-      console.log(error);
-    });
 };
 
 export const getArticle = (article_id) => {
   return ncNewsApi
     .get(`/articles/${article_id}`)
     .then((requestedArticle) => {
-      return requestedArticle;
+      return requestedArticle.data;
     })
-    .catch((error) => {
-      console.log(error);
-    });
 };
+
+export const getArticleComments = (article_id) => {
+  return ncNewsApi
+  .get(`/articles/${article_id}/comments`)
+  .then((requestedComments) => {
+    return requestedComments.data
+  })
+}
