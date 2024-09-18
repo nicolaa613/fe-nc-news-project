@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticle } from "../api";
+import Comments from "./Comments"
 
 const Article = () => {
   const { article_id } = useParams();
-  console.log(article_id)
   const [article, setArticle] = useState({});
 
   useEffect(() => {
     getArticle(article_id).then((article) => {
-        setArticle(article.data)
+        setArticle(article)
     })
   }, [article_id])
 
@@ -19,7 +19,8 @@ const Article = () => {
         <img src={article.article_img_url} />
         <h4>{article.author} | Published: {article.created_at}</h4>
         <p>{article.body}</p>
-        <h3>comments...</h3>
+        <br />
+        <Comments article_id={article_id} /> 
     </section>
   )
 };
