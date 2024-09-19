@@ -28,3 +28,7 @@ export const patchVote = (article_id, vote) => {
   const voteUpdate = { inc_votes: vote };
   return ncNewsApi.patch(`/articles/${article_id}`, voteUpdate);
 };
+
+export const postComment = (article_id, newComment) => {
+  return ncNewsApi.post(`/articles/${article_id}/comments`, newComment);
+};
